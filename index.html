@@ -82,6 +82,17 @@ img,svg{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 ul{list-style:none}
 
+/* Aurora giratoria de fondo */
+.bg-aurora{
+  position:fixed;inset:-35%;z-index:-1;pointer-events:none;opacity:.5;
+  background:conic-gradient(from 0deg at 50% 50%,
+    rgba(255,45,120,.11), rgba(37,244,238,.09), rgba(184,255,46,.07),
+    rgba(138,92,255,.11), rgba(255,45,120,.11));
+  filter:blur(70px);
+  animation:aurora-spin 36s linear infinite;
+}
+@keyframes aurora-spin{to{transform:rotate(360deg)}}
+
 /* ============ HILO DE LUZ SVG ============ */
 #thread-wrap{
   position:absolute;top:0;left:0;width:100%;z-index:0;pointer-events:none;
@@ -119,8 +130,19 @@ main{position:relative;z-index:1}
   font-family:var(--font-display);font-weight:700;font-size:1rem;letter-spacing:.04em;
   display:flex;align-items:center;gap:.55rem;white-space:nowrap;
 }
+.nav-logo-img{
+  width:38px;height:38px;object-fit:contain;
+  filter:drop-shadow(0 0 8px rgba(255,45,120,.85)) drop-shadow(0 0 18px rgba(37,244,238,.5));
+  animation:logo-wiggle 5s ease-in-out infinite;
+}
+@keyframes logo-wiggle{
+  0%,100%{transform:rotate(-6deg) scale(1)}
+  25%{transform:rotate(6deg) scale(1.1)}
+  50%{transform:rotate(-4deg) scale(1)}
+  75%{transform:rotate(5deg) scale(1.07)}
+}
 .nav-logo .tt-glyph{
-  width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
+  width:30px;height:30px;border-radius:9px;display:none;place-items:center;
   background:#000;border:1px solid var(--line);position:relative;font-weight:800;font-size:1.05rem;
   box-shadow:var(--glow-cyan);
 }
@@ -176,9 +198,16 @@ main{position:relative;z-index:1}
   font-weight:700;line-height:1.12;letter-spacing:-.01em;
   margin-bottom:.9rem;
 }
-.sec-title .neon-pink{color:var(--pink);text-shadow:var(--glow-pink)}
-.sec-title .neon-cyan{color:var(--cyan);text-shadow:var(--glow-cyan)}
-.sec-title .neon-lime{color:var(--lime);text-shadow:var(--glow-lime)}
+.sec-title .neon-pink{color:var(--pink);text-shadow:var(--glow-pink);animation:neon-flicker 5s linear infinite}
+.sec-title .neon-cyan{color:var(--cyan);text-shadow:var(--glow-cyan);animation:neon-flicker 6.4s linear infinite 1.2s}
+.sec-title .neon-lime{color:var(--lime);text-shadow:var(--glow-lime);animation:neon-flicker 5.7s linear infinite .6s}
+@keyframes neon-flicker{
+  0%,91%,100%{opacity:1}
+  92%{opacity:.45}
+  93%{opacity:1}
+  95%{opacity:.6}
+  96%{opacity:1}
+}
 .sec-sub{color:var(--text-dim);max-width:640px;font-size:1rem;margin-bottom:2.6rem}
 
 /* Reveal (Intersection Observer) */
@@ -197,6 +226,26 @@ main{position:relative;z-index:1}
   display:flex;flex-direction:column;justify-content:center;align-items:center;
   text-align:center;position:relative;
   padding:7rem 1.2rem 6rem;overflow:hidden;
+}
+.hero-logo{
+  width:clamp(110px,26vw,180px);margin-bottom:1.1rem;position:relative;z-index:2;
+  filter:drop-shadow(0 0 16px rgba(255,45,120,.8)) drop-shadow(0 0 46px rgba(37,244,238,.45));
+  animation:hero-logo-float 4.2s ease-in-out infinite;
+}
+@keyframes hero-logo-float{
+  0%,100%{transform:translateY(0) rotate(-5deg) scale(1)}
+  50%{transform:translateY(-18px) rotate(5deg) scale(1.05)}
+}
+.hero-deco{
+  position:absolute;width:clamp(60px,10vw,110px);opacity:.55;pointer-events:none;z-index:0;
+  filter:blur(1.5px) drop-shadow(0 0 18px rgba(255,45,120,.7));
+  animation:deco-drift 7s ease-in-out infinite;
+}
+.hero-deco.d-left{left:4%;top:22%;animation-delay:-2s;transform:rotate(-18deg)}
+.hero-deco.d-right{right:5%;bottom:18%;animation-delay:-4.5s;filter:blur(1.5px) drop-shadow(0 0 18px rgba(37,244,238,.7))}
+@keyframes deco-drift{
+  0%,100%{transform:translateY(0) rotate(-14deg)}
+  50%{transform:translateY(-26px) rotate(10deg)}
 }
 .hero-badge{
   font-family:var(--font-display);font-size:.72rem;font-weight:700;
@@ -319,6 +368,26 @@ main{position:relative;z-index:1}
   box-shadow:0 0 24px rgba(37,244,238,.9),0 0 60px rgba(37,244,238,.4);
   transform:translateY(-3px);
 }
+.btn-coin{
+  position:relative;overflow:hidden;cursor:pointer;
+  display:inline-block;text-align:center;
+  font-family:var(--font-display);font-weight:700;font-size:1rem;letter-spacing:.05em;
+  padding:1rem 2.2rem;border-radius:999px;border:none;color:#101800;
+  background:linear-gradient(100deg,var(--lime) 0%,#5dff7a 100%);
+  box-shadow:0 0 18px rgba(184,255,46,.7),0 0 50px rgba(184,255,46,.3),inset 0 0 14px rgba(255,255,255,.35);
+  transition:transform .22s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+}
+.btn-coin:hover{
+  transform:translateY(-4px) scale(1.05);
+  box-shadow:0 0 28px rgba(184,255,46,1),0 0 80px rgba(184,255,46,.5),inset 0 0 20px rgba(255,255,255,.5);
+}
+.btn-coin:active{transform:scale(.96)}
+.coin-link{
+  color:var(--lime);font-weight:700;text-shadow:0 0 10px rgba(184,255,46,.8);
+  border-bottom:1px dashed rgba(184,255,46,.6);
+  transition:text-shadow .25s;
+}
+.coin-link:hover{text-shadow:0 0 16px var(--lime),0 0 34px var(--lime)}
 
 /* Partículas flotantes hero */
 .particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
@@ -821,6 +890,52 @@ main{position:relative;z-index:1}
 .mania-box.champ li::before{content:"👑";filter:drop-shadow(0 0 6px #ffd34d)}
 .mania-box li b{color:#fff}
 
+/* ============ CTA FINAL ============ */
+.final-cta{
+  text-align:center;border-radius:34px;position:relative;overflow:hidden;
+  padding:3.2rem 1.5rem;
+  background:
+    radial-gradient(500px 260px at 50% 0%, rgba(255,45,120,.16), transparent 70%),
+    radial-gradient(500px 260px at 15% 100%, rgba(37,244,238,.13), transparent 70%),
+    radial-gradient(500px 260px at 85% 100%, rgba(184,255,46,.10), transparent 70%),
+    var(--bg-2);
+  border:1px solid var(--line);
+}
+.final-cta::before{
+  content:"";position:absolute;inset:-2px;border-radius:inherit;padding:2px;z-index:0;
+  background:conic-gradient(from var(--ang,0deg),var(--pink),var(--cyan),var(--lime),var(--violet),var(--pink));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  animation:border-run 5s linear infinite;
+  opacity:.85;
+}
+@property --ang{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes border-run{to{--ang:360deg}}
+.final-cta>*{position:relative;z-index:1}
+.final-cta .fc-logo{
+  width:clamp(90px,18vw,140px);margin:0 auto 1.2rem;
+  filter:drop-shadow(0 0 18px rgba(255,45,120,.85)) drop-shadow(0 0 50px rgba(37,244,238,.5));
+  animation:hero-logo-float 4s ease-in-out infinite;
+}
+.final-cta h2{
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(1.8rem,6.5vw,3.2rem);line-height:1.08;margin-bottom:.7rem;
+}
+.final-cta h2 span{
+  background:linear-gradient(95deg,var(--cyan),var(--pink),var(--lime));
+  background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 16px rgba(255,45,120,.55));
+  animation:hue-flow 6s linear infinite;
+}
+.final-cta p{color:var(--text-dim);max-width:560px;margin:0 auto;font-size:.98rem}
+.final-cta .coin-note{
+  display:inline-block;margin-top:1.1rem;font-size:.82rem;color:var(--lime-soft);
+  border:1px dashed rgba(184,255,46,.5);border-radius:999px;padding:.45rem 1.1rem;
+  background:rgba(184,255,46,.06);
+  box-shadow:0 0 16px rgba(184,255,46,.15), inset 0 0 14px rgba(184,255,46,.06);
+}
+
 /* ============ FOOTER ============ */
 footer{
   position:relative;z-index:1;
@@ -889,10 +1004,12 @@ footer .f-logo.boom{animation:logo-boom 1.1s cubic-bezier(.2,.9,.3,1.4)}
 <body>
 
 <div id="scroll-progress" aria-hidden="true"></div>
+<div class="bg-aurora" aria-hidden="true"></div>
 
 <!-- ===== NAV ===== -->
 <nav class="nav">
   <a class="nav-logo" href="#hero">
+    <img class="nav-logo-img" src="https://sf16-website-login.neutral.ttwstatic.com/obj/tiktok_web_login_static/ies/resource/falcon/campaign_cosmic_brick/static/image/gift1-fallback.f5b02520.png" alt="Logo Community FEST 26" onerror="this.remove();document.querySelector('.tt-glyph').style.display='grid'">
     <span class="tt-glyph"><span>♪</span></span>
     Community&nbsp;FEST&nbsp;<span style="color:var(--pink);text-shadow:0 0 10px var(--pink)">26</span>
   </a>
@@ -933,6 +1050,11 @@ footer .f-logo.boom{animation:logo-boom 1.1s cubic-bezier(.2,.9,.3,1.4)}
 <header class="hero" id="hero">
   <div class="particles" id="particles"></div>
 
+  <img class="hero-deco d-left" src="https://sf16-website-login.neutral.ttwstatic.com/obj/tiktok_web_login_static/ies/resource/falcon/campaign_cosmic_brick/static/image/gift1-fallback.f5b02520.png" alt="" aria-hidden="true" onerror="this.remove()">
+  <img class="hero-deco d-right" src="https://sf16-website-login.neutral.ttwstatic.com/obj/tiktok_web_login_static/ies/resource/falcon/campaign_cosmic_brick/static/image/gift1-fallback.f5b02520.png" alt="" aria-hidden="true" onerror="this.remove()">
+
+  <img class="hero-logo" src="https://sf16-website-login.neutral.ttwstatic.com/obj/tiktok_web_login_static/ies/resource/falcon/campaign_cosmic_brick/static/image/gift1-fallback.f5b02520.png" alt="Logo oficial del Community FEST 26" onerror="this.remove()">
+
   <span class="hero-badge">⬤ LIVE · TIKTOK LIVE EVENT · LATAM ⬤</span>
 
   <h1>
@@ -959,8 +1081,10 @@ footer .f-logo.boom{animation:logo-boom 1.1s cubic-bezier(.2,.9,.3,1.4)}
   <div class="marquee-track">
     <span>#CommunityFEST2026</span><span>Temporada de Equipo</span><span>LIVE FEST</span>
     <span>Haz que cada LIVE cuente</span><span>Orgullo Regional</span><span>Match Mania</span>
+    <span>🪙 Monedas más baratas en la web</span><span>¡Sé Parte de la Victoria!</span><span>LATAM</span>
     <span>#CommunityFEST2026</span><span>Temporada de Equipo</span><span>LIVE FEST</span>
     <span>Haz que cada LIVE cuente</span><span>Orgullo Regional</span><span>Match Mania</span>
+    <span>🪙 Monedas más baratas en la web</span><span>¡Sé Parte de la Victoria!</span><span>LATAM</span>
   </div>
 </div>
 
@@ -1229,7 +1353,7 @@ footer .f-logo.boom{animation:logo-boom 1.1s cubic-bezier(.2,.9,.3,1.4)}
       </div>
       <div class="pillar">
         <h4>🪙 Recarga monedas</h4>
-        <p>Recarga <b>monedas en la web</b> y prepara tu arsenal de apoyo para los momentos decisivos.</p>
+        <p>Recarga <b>monedas en la web al precio más barato</b> en <a class="coin-link" href="https://www.tiktok.com/coin" target="_blank" rel="noopener">tiktok.com/coin</a> y prepara tu arsenal de apoyo para los momentos decisivos.</p>
       </div>
       <div class="mission-foot">
         💡 Tu apoyo diario puede ser la diferencia entre el <b>Top 50</b> y quedarse fuera. ¡Cada voto cuenta!
@@ -1384,12 +1508,27 @@ footer .f-logo.boom{animation:logo-boom 1.1s cubic-bezier(.2,.9,.3,1.4)}
   </div>
 </section>
 
+<!-- ===== CTA FINAL ===== -->
+<section class="section" id="final" data-thread-stop>
+  <div class="final-cta reveal flash">
+    <img class="fc-logo" src="https://sf16-website-login.neutral.ttwstatic.com/obj/tiktok_web_login_static/ies/resource/falcon/campaign_cosmic_brick/static/image/gift1-fallback.f5b02520.png" alt="" aria-hidden="true" onerror="this.remove()">
+    <h2>¿Listo para hacer <span>HISTORIA</span>?</h2>
+    <p>Regístrate ahora, enciende tu LIVE y carga tu arsenal de monedas al mejor precio. La comunidad te espera.</p>
+    <div class="cta-row">
+      <a class="btn-neon" href="https://www.tiktok.com/t/ZSxRqsnrJ/" target="_blank" rel="noopener">🔥 ¡Únete al FEST!</a>
+      <a class="btn-coin" href="https://www.tiktok.com/coin" target="_blank" rel="noopener">🪙 Recargar monedas más baratas</a>
+    </div>
+    <span class="coin-note">💸 Recargando en <b>tiktok.com/coin</b> obtienes más monedas por tu dinero que en la app</span>
+  </div>
+</section>
+
 </main>
 
 <!-- ===== FOOTER ===== -->
 <footer>
   <div class="f-logo">TikTok Community FEST 26</div>
   <p>Temporada de Equipo del FEST · Creadores y espectadores construyendo comunidad e impulsando el orgullo regional.</p>
+  <p>📲 <a class="coin-link" href="https://www.tiktok.com/t/ZSxRqsnrJ/" target="_blank" rel="noopener">Regístrate al evento</a> &nbsp;·&nbsp; 🪙 <a class="coin-link" href="https://www.tiktok.com/coin" target="_blank" rel="noopener">Recarga monedas al mejor precio</a></p>
   <p class="tiny">Página conceptual de fan/demo · Las fechas y reglas mostradas corresponden a la dinámica del evento. #CommunityFEST2026</p>
 </footer>
 
@@ -1410,6 +1549,7 @@ footer .f-logo.boom{animation:logo-boom 1.1s cubic-bezier(.2,.9,.3,1.4)}
     <button data-q="puntos">💗 ¿Cómo sumo puntos?</button>
     <button data-q="ranking">📊 Mi ranking</button>
     <button data-q="misiones">🧭 ¿Qué misión hago?</button>
+    <button data-q="monedas">🪙 Monedas baratas</button>
   </div>
 </div>
 <button class="leon-fab" id="leonFab" aria-label="Abrir chat con LEON">
@@ -1624,8 +1764,21 @@ footer .f-logo.boom{animation:logo-boom 1.1s cubic-bezier(.2,.9,.3,1.4)}
     pHost.appendChild(dot);
   }
 
+  /* ============ TILT 3D EN TARJETAS (solo puntero fino) ============ */
+  if(window.matchMedia('(pointer:fine)').matches){
+    document.querySelectorAll('.cat-card,.gp-card,.rw-card,.stage,.tk').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        const rx = ((e.clientY - r.top) / r.height - .5) * -7;
+        const ry = ((e.clientX - r.left) / r.width - .5) * 7;
+        card.style.transform = `perspective(750px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-6px) scale(1.015)`;
+      });
+      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+  }
+
   /* ============ RIPPLE EN BOTONES ============ */
-  document.querySelectorAll('.btn-neon,.btn-ghost').forEach(btn => {
+  document.querySelectorAll('.btn-neon,.btn-ghost,.btn-coin').forEach(btn => {
     btn.addEventListener('click', function(ev){
       const r = document.createElement('span');
       r.className = 'ripple';
@@ -1645,11 +1798,13 @@ footer .f-logo.boom{animation:logo-boom 1.1s cubic-bezier(.2,.9,.3,1.4)}
     fechas: '📅 ¡Apunta! Registro: <b>11–17/06</b> · Clasificación: <b>18–25/06</b> · Finales Globales: <b>28/06–02/07 (UTC+0)</b>. Y Match Mania sigue hasta el <b>11/07</b>. 🦁',
     puntos: '💗 Fácil: 1 Donador = <b>100 pts/día</b>, primer donador = <b>300 pts</b>, nuevo Super Fan = <b>100 pts</b>. Regalo normal = 1 pt y especial = 2 pts. ¡Activa la Doble Explosión para duplicar todo 30 min! 💥',
     ranking: '📊 Estás a solo <b>1,250 pts</b> de superar a tu rival más cercano… ¡y la Hora Bonus x2 de las 21:00 es tu mejor oportunidad de remontar! Aún puedes recuperarte. 🚀',
-    misiones: '🧭 Mi sugerencia: empieza por <b>transmitir 25 min</b> (fácil + Cofre del Tesoro 🎁), luego la misión de <b>comentarios</b> y cierra con la de <b>donadores</b>, que es la de mayor recompensa hoy.'
+    misiones: '🧭 Mi sugerencia: empieza por <b>transmitir 25 min</b> (fácil + Cofre del Tesoro 🎁), luego la misión de <b>comentarios</b> y cierra con la de <b>donadores</b>, que es la de mayor recompensa hoy.',
+    monedas: '🪙 ¡Dato pro! Recarga en la web oficial <a class="coin-link" href="https://www.tiktok.com/coin" target="_blank" rel="noopener">tiktok.com/coin</a>: obtienes <b>más monedas por tu dinero</b> que comprando en la app. ¡Más monedas = más regalos para tu creador! 💖'
   };
   const userLabels = {
     fechas:'📅 Fechas clave', puntos:'💗 ¿Cómo sumo puntos?',
-    ranking:'📊 Mi ranking', misiones:'🧭 ¿Qué misión hago?'
+    ranking:'📊 Mi ranking', misiones:'🧭 ¿Qué misión hago?',
+    monedas:'🪙 Monedas baratas'
   };
   fab.addEventListener('click', () => chat.classList.toggle('open'));
   document.getElementById('leonQuick').addEventListener('click', (e) => {
