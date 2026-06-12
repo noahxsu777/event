@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TikTok Community FEST 26 — Temporada de Equipo del FEST. Creadores y espectadores construyendo comunidad. ¡Haz que cada LIVE cuente!">
+<title>TikTok Community FEST 26 · Temporada de Equipo del FEST</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TIKTOK COMMUNITY FEST 26 — NEON DARK SYSTEM
+   ============================================================ */
+:root{
+  /* Paleta neón */
+  --bg-0:#030305;
+  --bg-1:#08080e;
+  --bg-2:#0d0d18;
+  --panel:rgba(16,16,28,.72);
+  --panel-2:rgba(22,22,38,.85);
+  --line:rgba(255,255,255,.08);
+
+  --pink:#ff2d78;
+  --pink-soft:#ff5e9c;
+  --cyan:#25f4ee;
+  --cyan-soft:#7df9ff;
+  --lime:#b8ff2e;
+  --lime-soft:#dcff7a;
+  --violet:#8a5cff;
+
+  --text:#f4f5fb;
+  --text-dim:#9b9db4;
+
+  --glow-pink:0 0 8px rgba(255,45,120,.85),0 0 24px rgba(255,45,120,.55),0 0 64px rgba(255,45,120,.30);
+  --glow-cyan:0 0 8px rgba(37,244,238,.85),0 0 24px rgba(37,244,238,.5),0 0 64px rgba(37,244,238,.28);
+  --glow-lime:0 0 8px rgba(184,255,46,.85),0 0 24px rgba(184,255,46,.5),0 0 60px rgba(184,255,46,.25);
+
+  --font-display:'Space Grotesk',sans-serif;
+  --font-body:'Outfit',sans-serif;
+
+  --radius:18px;
+  --radius-lg:26px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--bg-0);
+  color:var(--text);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+::selection{background:var(--pink);color:#fff}
+
+/* Fondo espacial con grid + nebulosas */
+body::before{
+  content:"";
+  position:fixed;inset:0;z-index:-3;
+  background:
+    radial-gradient(900px 600px at 85% -5%, rgba(255,45,120,.14), transparent 60%),
+    radial-gradient(800px 600px at 0% 30%, rgba(37,244,238,.10), transparent 60%),
+    radial-gradient(900px 700px at 100% 75%, rgba(138,92,255,.12), transparent 60%),
+    radial-gradient(700px 500px at 10% 100%, rgba(184,255,46,.07), transparent 60%),
+    var(--bg-0);
+}
+body::after{
+  content:"";
+  position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size:48px 48px;
+  mask-image:radial-gradient(ellipse at 50% 30%, #000 30%, transparent 80%);
+  -webkit-mask-image:radial-gradient(ellipse at 50% 30%, #000 30%, transparent 80%);
+}
+
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+
+/* ============ HILO DE LUZ SVG ============ */
+#thread-wrap{
+  position:absolute;top:0;left:0;width:100%;z-index:0;pointer-events:none;
+}
+#thread{width:100%;height:100%;overflow:visible}
+#thread-base{
+  fill:none;stroke:rgba(255,255,255,.05);stroke-width:3;
+}
+#thread-glow{
+  fill:none;stroke:url(#threadGrad);stroke-width:10;stroke-linecap:round;
+  opacity:.32;filter:blur(10px);
+}
+#thread-path{
+  fill:none;stroke:url(#threadGrad);stroke-width:3.5;stroke-linecap:round;
+  filter:drop-shadow(0 0 6px rgba(37,244,238,.9)) drop-shadow(0 0 18px rgba(255,45,120,.6));
+}
+#thread-comet{
+  fill:#fff;
+  filter:drop-shadow(0 0 6px #fff) drop-shadow(0 0 14px var(--cyan)) drop-shadow(0 0 30px var(--pink));
+}
+
+main{position:relative;z-index:1}
+
+/* ============ NAV ============ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.2rem;
+  background:rgba(5,5,9,.65);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-logo{
+  font-family:var(--font-display);font-weight:700;font-size:1rem;letter-spacing:.04em;
+  display:flex;align-items:center;gap:.55rem;white-space:nowrap;
+}
+.nav-logo .tt-glyph{
+  width:30px;height:30px;border-radius:9px;display:grid;place-items:center;
+  background:#000;border:1px solid var(--line);position:relative;font-weight:800;font-size:1.05rem;
+  box-shadow:var(--glow-cyan);
+}
+.nav-logo .tt-glyph span{position:relative;color:#fff}
+.nav-logo .tt-glyph::before,.nav-logo .tt-glyph::after{
+  content:"♪";position:absolute;font-size:1.05rem;font-weight:800;
+}
+.nav-logo .tt-glyph::before{color:var(--cyan);transform:translate(-1.5px,-1px)}
+.nav-logo .tt-glyph::after{color:var(--pink);transform:translate(1.5px,1px)}
+.nav-links{display:none;gap:1.3rem;font-size:.86rem;font-weight:500;color:var(--text-dim)}
+.nav-links a{transition:color .25s, text-shadow .25s}
+.nav-links a:hover{color:#fff;text-shadow:0 0 10px var(--cyan),0 0 26px var(--cyan)}
+.nav-cta{
+  font-family:var(--font-display);font-weight:700;font-size:.8rem;letter-spacing:.05em;
+  padding:.5rem 1rem;border-radius:999px;color:#fff;
+  background:linear-gradient(100deg,var(--pink),#ff5e3a);
+  box-shadow:0 0 14px rgba(255,45,120,.6),0 0 34px rgba(255,45,120,.3);
+  transition:transform .2s, box-shadow .25s;
+}
+.nav-cta:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 0 20px rgba(255,45,120,.9),0 0 50px rgba(255,45,120,.45)}
+@media(min-width:840px){
+  .nav{padding:.9rem 2.4rem}
+  .nav-links{display:flex}
+}
+
+/* ============ SECCIONES BASE ============ */
+.section{
+  position:relative;
+  max-width:1180px;margin:0 auto;
+  padding:5.5rem 1.2rem;
+}
+@media(min-width:840px){.section{padding:7.5rem 2rem}}
+
+.kicker{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--font-display);font-size:.74rem;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);
+  border:1px solid rgba(37,244,238,.35);border-radius:999px;
+  padding:.4rem 1rem;margin-bottom:1.1rem;
+  background:rgba(37,244,238,.06);
+  box-shadow:inset 0 0 18px rgba(37,244,238,.08),0 0 18px rgba(37,244,238,.18);
+}
+.kicker::before{
+  content:"";width:7px;height:7px;border-radius:50%;
+  background:var(--cyan);box-shadow:var(--glow-cyan);
+  animation:pulse-dot 1.6s ease-in-out infinite;
+}
+@keyframes pulse-dot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.55}}
+
+.sec-title{
+  font-family:var(--font-display);
+  font-size:clamp(1.7rem,5.4vw,2.9rem);
+  font-weight:700;line-height:1.12;letter-spacing:-.01em;
+  margin-bottom:.9rem;
+}
+.sec-title .neon-pink{color:var(--pink);text-shadow:var(--glow-pink)}
+.sec-title .neon-cyan{color:var(--cyan);text-shadow:var(--glow-cyan)}
+.sec-title .neon-lime{color:var(--lime);text-shadow:var(--glow-lime)}
+.sec-sub{color:var(--text-dim);max-width:640px;font-size:1rem;margin-bottom:2.6rem}
+
+/* Reveal (Intersection Observer) */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.visible{opacity:1;transform:none}
+.reveal.flash.visible{animation:neon-flash .9s ease-out .15s}
+@keyframes neon-flash{
+  0%{filter:brightness(1)}
+  18%{filter:brightness(2.1) saturate(1.6)}
+  100%{filter:brightness(1)}
+}
+
+/* ============ HERO ============ */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;position:relative;
+  padding:7rem 1.2rem 6rem;overflow:hidden;
+}
+.hero-badge{
+  font-family:var(--font-display);font-size:.72rem;font-weight:700;
+  letter-spacing:.3em;text-transform:uppercase;
+  color:var(--lime);border:1px solid rgba(184,255,46,.4);
+  padding:.5rem 1.3rem;border-radius:999px;margin-bottom:1.6rem;
+  background:rgba(184,255,46,.06);
+  box-shadow:0 0 16px rgba(184,255,46,.25), inset 0 0 16px rgba(184,255,46,.08);
+  animation:badge-blink 3.2s ease-in-out infinite;
+}
+@keyframes badge-blink{0%,100%{box-shadow:0 0 16px rgba(184,255,46,.25),inset 0 0 16px rgba(184,255,46,.08)}50%{box-shadow:0 0 30px rgba(184,255,46,.55),inset 0 0 24px rgba(184,255,46,.16)}}
+
+.hero h1{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:clamp(2.5rem,9.5vw,6.2rem);
+  line-height:1.02;letter-spacing:-.02em;
+  margin-bottom:1.2rem;
+  position:relative;
+}
+.hero h1 .line-a{display:block;color:#fff;text-shadow:0 0 18px rgba(255,255,255,.35)}
+.hero h1 .line-b{
+  display:block;
+  background:linear-gradient(95deg,var(--cyan) 5%,var(--pink) 50%,var(--lime) 95%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 14px rgba(37,244,238,.55)) drop-shadow(0 0 30px rgba(255,45,120,.4));
+  animation:hue-flow 7s linear infinite;
+  background-size:200% 100%;
+}
+@keyframes hue-flow{0%{background-position:0% 0}100%{background-position:200% 0}}
+
+/* Glitch TikTok en el título */
+.glitch-host{position:relative;display:inline-block}
+.glitch-host::before,.glitch-host::after{
+  content:attr(data-text);
+  position:absolute;inset:0;pointer-events:none;
+  font-family:inherit;font-weight:inherit;letter-spacing:inherit;line-height:inherit;
+  opacity:0;
+}
+.glitch-host::before{color:var(--cyan);z-index:-1;animation:glitch-a 4.5s steps(1) infinite}
+.glitch-host::after{color:var(--pink);z-index:-1;animation:glitch-b 4.5s steps(1) infinite}
+@keyframes glitch-a{
+  0%,89%,100%{opacity:0;transform:none}
+  90%{opacity:.85;transform:translate(-5px,-3px)}
+  92%{opacity:.85;transform:translate(4px,2px)}
+  94%{opacity:0}
+}
+@keyframes glitch-b{
+  0%,89%,100%{opacity:0;transform:none}
+  90%{opacity:.85;transform:translate(5px,3px)}
+  92%{opacity:.85;transform:translate(-4px,-2px)}
+  94%{opacity:0}
+}
+
+.hero-sub{
+  font-size:clamp(1rem,3.4vw,1.35rem);
+  font-weight:600;color:var(--cyan-soft);
+  text-shadow:0 0 14px rgba(37,244,238,.5);
+  margin-bottom:1.8rem;letter-spacing:.02em;
+}
+.hero-narrative{
+  max-width:680px;
+  font-size:clamp(.95rem,2.6vw,1.08rem);
+  color:var(--text-dim);
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  padding:1.4rem 1.6rem;
+  position:relative;
+  box-shadow:inset 0 0 40px rgba(37,244,238,.04),0 0 30px rgba(255,45,120,.08);
+  backdrop-filter:blur(8px);
+}
+.hero-narrative::before{
+  content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;z-index:-1;
+  background:linear-gradient(120deg,rgba(37,244,238,.6),rgba(255,45,120,.6),rgba(184,255,46,.6));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  opacity:.55;
+}
+.hero-narrative strong{color:#fff}
+.hero-narrative .punch{
+  display:block;margin-top:.7rem;font-family:var(--font-display);font-weight:700;
+  color:var(--lime);text-shadow:var(--glow-lime);font-size:1.05em;
+}
+
+/* CTA principal */
+.cta-row{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:2.2rem}
+.btn-neon{
+  position:relative;overflow:hidden;cursor:pointer;
+  font-family:var(--font-display);font-weight:700;font-size:1rem;letter-spacing:.06em;
+  padding:1rem 2.4rem;border-radius:999px;border:none;color:#fff;
+  background:linear-gradient(100deg,var(--pink) 0%,#ff5e3a 100%);
+  box-shadow:0 0 18px rgba(255,45,120,.7),0 0 50px rgba(255,45,120,.35),inset 0 0 14px rgba(255,255,255,.18);
+  transition:transform .22s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+  animation:cta-float 3.4s ease-in-out infinite;
+}
+@keyframes cta-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.btn-neon:hover{
+  transform:translateY(-4px) scale(1.05);
+  box-shadow:0 0 28px rgba(255,45,120,1),0 0 80px rgba(255,45,120,.55),inset 0 0 20px rgba(255,255,255,.3);
+  animation-play-state:paused;
+}
+.btn-neon:active{transform:scale(.96)}
+.btn-neon .ripple{
+  position:absolute;border-radius:50%;background:rgba(255,255,255,.55);
+  transform:scale(0);animation:ripple .65s ease-out forwards;pointer-events:none;
+}
+@keyframes ripple{to{transform:scale(4);opacity:0}}
+.btn-ghost{
+  position:relative;overflow:hidden;cursor:pointer;
+  font-family:var(--font-display);font-weight:600;font-size:.95rem;letter-spacing:.05em;
+  padding:1rem 2rem;border-radius:999px;color:var(--cyan);
+  background:rgba(37,244,238,.05);border:1px solid rgba(37,244,238,.5);
+  box-shadow:0 0 14px rgba(37,244,238,.25),inset 0 0 14px rgba(37,244,238,.06);
+  transition:all .25s;
+}
+.btn-ghost:hover{
+  color:#031416;background:var(--cyan);
+  box-shadow:0 0 24px rgba(37,244,238,.9),0 0 60px rgba(37,244,238,.4);
+  transform:translateY(-3px);
+}
+
+/* Partículas flotantes hero */
+.particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.particles i{
+  position:absolute;bottom:-12px;border-radius:50%;
+  animation:rise linear infinite;opacity:0;
+}
+@keyframes rise{
+  0%{transform:translateY(0) translateX(0);opacity:0}
+  12%{opacity:1}
+  85%{opacity:.8}
+  100%{transform:translateY(-105vh) translateX(var(--sway,20px));opacity:0}
+}
+
+/* Marquee */
+.marquee{
+  position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  background:rgba(10,10,18,.7);overflow:hidden;padding:.85rem 0;
+  box-shadow:0 0 30px rgba(255,45,120,.07) inset;
+}
+.marquee-track{
+  display:flex;gap:2.6rem;width:max-content;
+  animation:marquee 26s linear infinite;
+  font-family:var(--font-display);font-weight:700;font-size:.86rem;
+  letter-spacing:.22em;text-transform:uppercase;white-space:nowrap;
+}
+.marquee-track span{color:var(--text-dim)}
+.marquee-track span:nth-child(3n+1){color:var(--pink);text-shadow:0 0 12px rgba(255,45,120,.7)}
+.marquee-track span:nth-child(3n+2){color:var(--cyan);text-shadow:0 0 12px rgba(37,244,238,.7)}
+.marquee-track span:nth-child(3n){color:var(--lime);text-shadow:0 0 12px rgba(184,255,46,.7)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ============ CRONOGRAMA / TIMELINE ============ */
+.timeline{position:relative;margin-top:1rem}
+.timeline::before{
+  content:"";position:absolute;top:0;bottom:0;left:18px;width:2px;
+  background:linear-gradient(180deg,var(--cyan),var(--pink),var(--lime));
+  box-shadow:0 0 12px rgba(37,244,238,.6),0 0 26px rgba(255,45,120,.35);
+}
+.phase{
+  position:relative;padding:0 0 2.6rem 3.4rem;
+}
+.phase:last-child{padding-bottom:0}
+.phase-node{
+  position:absolute;left:0;top:.2rem;width:38px;height:38px;border-radius:50%;
+  display:grid;place-items:center;
+  font-family:var(--font-display);font-weight:700;font-size:.9rem;
+  background:var(--bg-1);border:2px solid var(--c,var(--cyan));color:var(--c,var(--cyan));
+  box-shadow:0 0 14px var(--c,var(--cyan)),inset 0 0 12px rgba(255,255,255,.06);
+  animation:node-pulse 2.4s ease-in-out infinite;
+}
+@keyframes node-pulse{0%,100%{box-shadow:0 0 10px var(--c,var(--cyan))}50%{box-shadow:0 0 26px var(--c,var(--cyan))}}
+.phase-card{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-lg);
+  padding:1.5rem 1.6rem;backdrop-filter:blur(8px);
+  transition:transform .3s,box-shadow .3s,border-color .3s;
+  position:relative;overflow:hidden;
+}
+.phase-card::after{
+  content:"";position:absolute;top:0;left:-80%;width:60%;height:100%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.07),transparent);
+  transform:skewX(-20deg);transition:left .7s ease;
+}
+.phase-card:hover{transform:translateX(8px);border-color:var(--c,var(--cyan));box-shadow:0 0 26px color-mix(in srgb,var(--c,var(--cyan)) 35%, transparent)}
+.phase-card:hover::after{left:130%}
+.phase-dates{
+  display:inline-block;font-family:var(--font-display);font-weight:700;font-size:.78rem;
+  letter-spacing:.12em;color:var(--c,var(--cyan));
+  border:1px solid color-mix(in srgb,var(--c,var(--cyan)) 50%, transparent);
+  background:color-mix(in srgb,var(--c,var(--cyan)) 9%, transparent);
+  border-radius:999px;padding:.3rem .9rem;margin-bottom:.7rem;
+  text-shadow:0 0 10px var(--c,var(--cyan));
+}
+.phase-card h3{font-family:var(--font-display);font-size:1.25rem;margin-bottom:.4rem}
+.phase-card p{color:var(--text-dim);font-size:.95rem}
+.phase-card p b{color:#fff;font-weight:600}
+.phase.p1{--c:var(--cyan)}
+.phase.p2{--c:var(--pink)}
+.phase.p3{--c:var(--lime)}
+@media(min-width:840px){
+  .timeline::before{left:50%;transform:translateX(-50%)}
+  .phase{width:50%;padding:0 3.2rem 3.4rem 0}
+  .phase-node{left:auto;right:-19px}
+  .phase:nth-child(even){margin-left:50%;padding:0 0 3.4rem 3.2rem}
+  .phase:nth-child(even) .phase-node{right:auto;left:-19px}
+  .phase:nth-child(odd) .phase-card{text-align:right}
+  .phase:nth-child(odd) .phase-card:hover{transform:translateX(-8px)}
+}
+
+/* ============ CATEGORÍAS ============ */
+.region-tag{
+  display:flex;align-items:center;gap:.6rem;margin-bottom:1.6rem;
+  font-family:var(--font-display);font-weight:700;letter-spacing:.18em;font-size:.8rem;
+  color:var(--lime);text-transform:uppercase;
+}
+.region-tag::before,.region-tag::after{
+  content:"";height:1px;flex:1;
+  background:linear-gradient(90deg,transparent,var(--lime),transparent);
+  box-shadow:0 0 8px var(--lime);
+}
+.cat-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:620px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:980px){.cat-grid{grid-template-columns:repeat(3,1fr)}}
+.cat-card{
+  --c:var(--cyan);
+  position:relative;border-radius:var(--radius-lg);padding:1.5rem;
+  background:var(--panel);border:1px solid var(--line);
+  overflow:hidden;cursor:pointer;
+  transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s;
+}
+.cat-card::before{
+  content:"";position:absolute;top:-40%;right:-30%;width:70%;height:90%;border-radius:50%;
+  background:radial-gradient(circle,color-mix(in srgb,var(--c) 28%, transparent),transparent 70%);
+  transition:opacity .4s;opacity:.5;
+}
+.cat-card:hover{
+  transform:translateY(-8px) scale(1.02);
+  border-color:var(--c);
+  box-shadow:0 14px 40px rgba(0,0,0,.5),0 0 30px color-mix(in srgb,var(--c) 40%, transparent);
+}
+.cat-card:hover::before{opacity:1}
+.cat-rank{
+  font-family:var(--font-display);font-weight:700;font-size:.68rem;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--text-dim);margin-bottom:.5rem;
+}
+.cat-name{
+  font-family:var(--font-display);font-weight:700;font-size:1.55rem;
+  color:var(--c);text-shadow:0 0 12px var(--c),0 0 34px color-mix(in srgb,var(--c) 55%, transparent);
+  margin-bottom:.35rem;display:flex;align-items:center;gap:.55rem;
+}
+.cat-members{font-size:.92rem;color:var(--text-dim)}
+.cat-members b{color:#fff;font-weight:600}
+.cat-bar{height:7px;border-radius:99px;background:rgba(255,255,255,.07);margin-top:1rem;overflow:hidden}
+.cat-bar i{
+  display:block;height:100%;width:var(--w,50%);border-radius:inherit;
+  background:linear-gradient(90deg,color-mix(in srgb,var(--c) 65%, #000),var(--c));
+  box-shadow:0 0 10px var(--c);
+  transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.2,.7,.2,1) .25s;
+}
+.visible .cat-bar i{transform:scaleX(1)}
+.c-leyenda{--c:#ffd34d}
+.c-platino{--c:#cfe6ff}
+.c-oro{--c:#ffb347}
+.c-plata{--c:#cfd3e0}
+.c-bronce{--c:#ff8c5a}
+.c-ascenso{--c:var(--lime)}
+.cat-note{
+  margin-top:1.6rem;font-size:.85rem;color:var(--text-dim);
+  border-left:3px solid var(--cyan);padding:.7rem 1rem;
+  background:rgba(37,244,238,.05);border-radius:0 12px 12px 0;
+  box-shadow:inset 0 0 20px rgba(37,244,238,.04);
+}
+.cat-note b{color:var(--cyan)}
+
+/* ============ GAMEPLAY ============ */
+.gp-grid{display:grid;grid-template-columns:1fr;gap:1.1rem}
+@media(min-width:840px){.gp-grid{grid-template-columns:repeat(2,1fr)}}
+.gp-card{
+  --c:var(--cyan);
+  position:relative;border-radius:var(--radius-lg);
+  background:var(--panel);border:1px solid var(--line);
+  padding:1.6rem;overflow:hidden;
+  transition:transform .3s,box-shadow .35s,border-color .3s;
+}
+.gp-card:hover{
+  transform:translateY(-6px);
+  border-color:var(--c);
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--c) 60%, transparent),0 0 34px color-mix(in srgb,var(--c) 35%, transparent),0 18px 50px rgba(0,0,0,.55);
+}
+.gp-card.wide{grid-column:1/-1}
+.gp-icon{
+  width:50px;height:50px;border-radius:14px;display:grid;place-items:center;
+  font-size:1.5rem;margin-bottom:1rem;
+  background:color-mix(in srgb,var(--c) 12%, transparent);
+  border:1px solid color-mix(in srgb,var(--c) 45%, transparent);
+  box-shadow:0 0 16px color-mix(in srgb,var(--c) 35%, transparent),inset 0 0 12px color-mix(in srgb,var(--c) 15%, transparent);
+}
+.gp-card h3{font-family:var(--font-display);font-size:1.2rem;margin-bottom:.6rem}
+.gp-card h3 em{font-style:normal;color:var(--c);text-shadow:0 0 12px var(--c)}
+.gp-card p,.gp-card li{color:var(--text-dim);font-size:.93rem}
+.gp-card li{padding:.34rem 0 .34rem 1.4rem;position:relative}
+.gp-card li::before{
+  content:"▸";position:absolute;left:.2rem;color:var(--c);
+  text-shadow:0 0 8px var(--c);
+}
+.gp-card b{color:#fff;font-weight:600}
+.gp-pink{--c:var(--pink)}
+.gp-cyan{--c:var(--cyan)}
+.gp-lime{--c:var(--lime)}
+.gp-violet{--c:var(--violet)}
+
+.pts-table{display:grid;grid-template-columns:1fr;gap:.6rem;margin-top:.8rem}
+@media(min-width:620px){.pts-table{grid-template-columns:repeat(3,1fr)}}
+.pts-chip{
+  text-align:center;border-radius:14px;padding:.9rem .6rem;
+  background:rgba(255,255,255,.03);border:1px solid var(--line);
+  transition:border-color .3s, box-shadow .3s, transform .3s;
+}
+.pts-chip:hover{border-color:var(--pink);box-shadow:0 0 18px rgba(255,45,120,.35);transform:translateY(-3px)}
+.pts-chip .num{
+  font-family:var(--font-display);font-weight:700;font-size:1.45rem;
+  color:var(--pink);text-shadow:var(--glow-pink);
+}
+.pts-chip .lbl{font-size:.78rem;color:var(--text-dim)}
+
+.gift-row{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:.9rem}
+.gift{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:.8rem;font-weight:600;border-radius:999px;padding:.42rem .9rem;
+  background:rgba(255,255,255,.04);border:1px solid var(--line);
+  transition:all .25s;cursor:default;
+}
+.gift:hover{transform:translateY(-3px) rotate(-1deg);border-color:var(--cyan);box-shadow:0 0 16px rgba(37,244,238,.4)}
+.gift .coin{color:var(--lime);text-shadow:0 0 10px var(--lime);font-family:var(--font-display)}
+
+.rally-meter{display:flex;gap:.45rem;margin-top:1rem;align-items:flex-end}
+.rally-meter i{
+  flex:1;border-radius:8px 8px 4px 4px;height:calc(14px + var(--lv)*9px);
+  background:linear-gradient(180deg,var(--lime),color-mix(in srgb,var(--lime) 35%, #000));
+  box-shadow:0 0 12px rgba(184,255,46,.5);
+  opacity:.32;transition:opacity .4s,transform .3s;
+}
+.rally-meter i:hover{transform:scaleY(1.12)}
+.visible .rally-meter i{animation:rally-light .5s ease forwards}
+.visible .rally-meter i:nth-child(1){animation-delay:.2s}
+.visible .rally-meter i:nth-child(2){animation-delay:.4s}
+.visible .rally-meter i:nth-child(3){animation-delay:.6s}
+.visible .rally-meter i:nth-child(4){animation-delay:.8s}
+.visible .rally-meter i:nth-child(5){animation-delay:1s}
+@keyframes rally-light{to{opacity:1}}
+.rally-caption{display:flex;justify-content:space-between;font-size:.72rem;color:var(--text-dim);margin-top:.4rem}
+.rally-caption b{color:var(--lime);text-shadow:0 0 8px var(--lime)}
+
+.note-pill{
+  display:inline-block;margin-top:.9rem;font-size:.78rem;
+  color:var(--pink-soft);border:1px dashed rgba(255,45,120,.5);
+  border-radius:12px;padding:.45rem .85rem;background:rgba(255,45,120,.05);
+}
+
+/* ============ RECOMPENSAS ============ */
+.rw-grid{display:grid;grid-template-columns:1fr;gap:1.1rem}
+@media(min-width:840px){.rw-grid{grid-template-columns:repeat(3,1fr)}}
+.rw-card{
+  --c:var(--cyan);
+  position:relative;border-radius:var(--radius-lg);overflow:hidden;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--c) 9%, var(--bg-2)),var(--panel-2));
+  border:1px solid color-mix(in srgb,var(--c) 28%, transparent);
+  padding:1.7rem 1.5rem;
+  transition:transform .35s,box-shadow .35s;
+}
+.rw-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,transparent,var(--c),transparent);
+  box-shadow:0 0 16px var(--c);
+}
+.rw-card:hover{transform:translateY(-9px);box-shadow:0 24px 60px rgba(0,0,0,.6),0 0 40px color-mix(in srgb,var(--c) 35%, transparent)}
+.rw-emoji{font-size:2.1rem;margin-bottom:.7rem;filter:drop-shadow(0 0 12px var(--c))}
+.rw-card h3{font-family:var(--font-display);font-size:1.18rem;color:var(--c);text-shadow:0 0 12px var(--c);margin-bottom:.8rem}
+.rw-card li{
+  padding:.4rem 0 .4rem 1.55rem;position:relative;color:var(--text-dim);font-size:.92rem;
+  border-bottom:1px dashed rgba(255,255,255,.06);
+}
+.rw-card li:last-child{border-bottom:none}
+.rw-card li::before{
+  content:"✦";position:absolute;left:.15rem;color:var(--c);text-shadow:0 0 9px var(--c);
+}
+.rw-card li b{color:#fff;font-weight:600}
+.rw-pink{--c:var(--pink)}
+.rw-cyan{--c:var(--cyan)}
+.rw-lime{--c:var(--lime)}
+
+.tickets{
+  margin-top:1.4rem;border-radius:var(--radius-lg);
+  background:var(--panel);border:1px solid rgba(184,255,46,.3);
+  padding:1.7rem 1.5rem;position:relative;overflow:hidden;
+  box-shadow:inset 0 0 50px rgba(184,255,46,.05),0 0 30px rgba(184,255,46,.12);
+}
+.tickets h3{
+  font-family:var(--font-display);font-size:1.25rem;margin-bottom:.3rem;
+  color:var(--lime);text-shadow:var(--glow-lime);
+}
+.tickets>p{color:var(--text-dim);font-size:.92rem;margin-bottom:1.2rem}
+.tickets>p b{color:#fff}
+.tk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem}
+@media(min-width:760px){.tk-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1020px){.tk-grid{grid-template-columns:repeat(6,1fr)}}
+.tk{
+  text-align:center;border-radius:14px;padding:1rem .5rem;
+  background:rgba(255,255,255,.03);border:1px solid var(--line);
+  transition:all .3s;
+}
+.tk:hover{border-color:var(--lime);box-shadow:0 0 18px rgba(184,255,46,.4);transform:translateY(-4px)}
+.tk .n{font-family:var(--font-display);font-weight:700;font-size:1.6rem;color:var(--lime);text-shadow:0 0 14px rgba(184,255,46,.8)}
+.tk .t{font-size:.74rem;color:var(--text-dim);letter-spacing:.04em}
+.tk .plus{display:inline-block;margin-top:.3rem;font-size:.62rem;font-weight:700;color:var(--pink);border:1px solid rgba(255,45,120,.5);border-radius:99px;padding:.1rem .5rem;text-shadow:0 0 8px var(--pink)}
+
+/* ============ MISIONES ============ */
+.split{display:grid;grid-template-columns:1fr;gap:1.2rem}
+@media(min-width:880px){.split{grid-template-columns:1fr 1fr}}
+.mission-col{
+  border-radius:var(--radius-lg);padding:1.7rem 1.5rem;position:relative;overflow:hidden;
+  background:var(--panel);border:1px solid var(--line);
+  transition:box-shadow .35s,border-color .35s,transform .35s;
+}
+.mission-col:hover{transform:translateY(-5px)}
+.mission-col.creator{--c:var(--pink)}
+.mission-col.viewer{--c:var(--cyan)}
+.mission-col:hover{border-color:var(--c);box-shadow:0 0 36px color-mix(in srgb,var(--c) 30%, transparent)}
+.mission-col h3{
+  font-family:var(--font-display);font-size:1.3rem;display:flex;align-items:center;gap:.6rem;
+  color:var(--c);text-shadow:0 0 12px var(--c);margin-bottom:1.1rem;
+}
+.pillar{
+  border:1px solid var(--line);border-radius:14px;padding:.95rem 1.05rem;margin-bottom:.7rem;
+  background:rgba(255,255,255,.025);transition:all .28s;
+}
+.pillar:hover{border-color:var(--c);box-shadow:0 0 16px color-mix(in srgb,var(--c) 30%, transparent);transform:translateX(5px)}
+.pillar h4{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.2rem}
+.pillar p{font-size:.86rem;color:var(--text-dim)}
+.pillar p b{color:var(--c)}
+.mission-foot{
+  margin-top:1rem;font-size:.84rem;color:var(--text-dim);
+  border-top:1px dashed rgba(255,255,255,.12);padding-top:.9rem;
+}
+.mission-foot b{color:var(--c);text-shadow:0 0 8px var(--c)}
+.hashtag{
+  font-family:var(--font-display);font-weight:700;color:var(--lime);
+  text-shadow:var(--glow-lime);white-space:nowrap;
+}
+
+/* ============ LEON ============ */
+.leon-panel{
+  display:grid;grid-template-columns:1fr;gap:2rem;align-items:center;
+  border-radius:28px;padding:2rem 1.5rem;position:relative;overflow:hidden;
+  background:linear-gradient(140deg,rgba(255,45,120,.08),rgba(13,13,24,.9) 38%,rgba(37,244,238,.08));
+  border:1px solid var(--line);
+  box-shadow:inset 0 0 80px rgba(138,92,255,.06);
+}
+@media(min-width:880px){.leon-panel{grid-template-columns:340px 1fr;padding:2.6rem}}
+.leon-avatar-zone{display:flex;flex-direction:column;align-items:center;gap:1rem}
+.leon-avatar{
+  position:relative;width:200px;height:200px;
+  animation:leon-bob 3.6s ease-in-out infinite;
+}
+@keyframes leon-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.leon-ring{
+  position:absolute;inset:-16px;border-radius:50%;
+  border:2px dashed rgba(37,244,238,.5);
+  animation:spin 14s linear infinite;
+  box-shadow:0 0 24px rgba(37,244,238,.25),inset 0 0 24px rgba(37,244,238,.12);
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.leon-name{
+  font-family:var(--font-display);font-weight:700;font-size:1.7rem;letter-spacing:.3em;
+  color:#fff;text-shadow:0 0 14px var(--cyan),0 0 40px var(--pink);
+}
+.leon-tag{font-size:.8rem;color:var(--text-dim);letter-spacing:.1em;text-transform:uppercase}
+.leon-skills{display:grid;gap:.8rem}
+.leon-skill{
+  display:flex;gap:1rem;align-items:flex-start;
+  background:rgba(255,255,255,.03);border:1px solid var(--line);
+  border-radius:16px;padding:1rem 1.1rem;transition:all .3s;
+}
+.leon-skill:hover{border-color:var(--cyan);box-shadow:0 0 20px rgba(37,244,238,.3);transform:translateX(6px)}
+.leon-skill .ic{
+  flex:0 0 auto;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:1.2rem;
+  background:rgba(37,244,238,.1);border:1px solid rgba(37,244,238,.4);
+  box-shadow:0 0 12px rgba(37,244,238,.3);
+}
+.leon-skill h4{font-size:.98rem;color:#fff}
+.leon-skill p{font-size:.86rem;color:var(--text-dim)}
+
+/* Chat flotante LEON */
+.leon-fab{
+  position:fixed;right:1.1rem;bottom:1.1rem;z-index:120;
+  width:64px;height:64px;border-radius:50%;border:2px solid var(--cyan);
+  background:radial-gradient(circle at 32% 30%,#2a2a45,#0c0c18);
+  display:grid;place-items:center;font-size:1.9rem;cursor:pointer;
+  box-shadow:0 0 18px rgba(37,244,238,.6),0 0 50px rgba(255,45,120,.3);
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1);
+  animation:fab-glow 2.6s ease-in-out infinite;
+}
+@keyframes fab-glow{0%,100%{box-shadow:0 0 14px rgba(37,244,238,.5),0 0 40px rgba(255,45,120,.25)}50%{box-shadow:0 0 26px rgba(37,244,238,.9),0 0 70px rgba(255,45,120,.45)}}
+.leon-fab:hover{transform:scale(1.12) rotate(-6deg)}
+.leon-fab .dot{
+  position:absolute;top:2px;right:2px;width:14px;height:14px;border-radius:50%;
+  background:var(--lime);box-shadow:0 0 10px var(--lime);
+  animation:pulse-dot 1.4s ease-in-out infinite;
+}
+.leon-chat{
+  position:fixed;right:1.1rem;bottom:5.8rem;z-index:120;
+  width:min(330px,calc(100vw - 2.2rem));
+  border-radius:20px;overflow:hidden;
+  background:rgba(12,12,22,.96);border:1px solid rgba(37,244,238,.4);
+  box-shadow:0 0 30px rgba(37,244,238,.3),0 24px 60px rgba(0,0,0,.7);
+  backdrop-filter:blur(14px);
+  transform:translateY(16px) scale(.96);opacity:0;pointer-events:none;
+  transition:all .32s cubic-bezier(.2,.9,.3,1.2);
+}
+.leon-chat.open{transform:none;opacity:1;pointer-events:auto}
+.leon-chat-head{
+  display:flex;align-items:center;gap:.7rem;padding:.9rem 1rem;
+  background:linear-gradient(100deg,rgba(255,45,120,.18),rgba(37,244,238,.16));
+  border-bottom:1px solid var(--line);
+}
+.leon-chat-head .face{font-size:1.6rem;filter:drop-shadow(0 0 8px var(--cyan))}
+.leon-chat-head b{font-family:var(--font-display);letter-spacing:.14em}
+.leon-chat-head small{display:block;font-size:.68rem;color:var(--lime);text-shadow:0 0 8px var(--lime)}
+.leon-log{height:230px;overflow-y:auto;padding:.9rem;display:flex;flex-direction:column;gap:.55rem;font-size:.84rem}
+.leon-log::-webkit-scrollbar{width:5px}
+.leon-log::-webkit-scrollbar-thumb{background:rgba(37,244,238,.4);border-radius:99px}
+.msg{max-width:86%;padding:.55rem .8rem;border-radius:14px;line-height:1.45;animation:msg-in .3s ease}
+@keyframes msg-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.msg.bot{align-self:flex-start;background:rgba(37,244,238,.1);border:1px solid rgba(37,244,238,.3);border-bottom-left-radius:4px}
+.msg.user{align-self:flex-end;background:rgba(255,45,120,.14);border:1px solid rgba(255,45,120,.4);border-bottom-right-radius:4px}
+.leon-quick{display:flex;flex-wrap:wrap;gap:.45rem;padding:.7rem .9rem;border-top:1px solid var(--line)}
+.leon-quick button{
+  font-family:var(--font-body);font-size:.72rem;font-weight:600;cursor:pointer;
+  color:var(--cyan);background:rgba(37,244,238,.07);
+  border:1px solid rgba(37,244,238,.4);border-radius:999px;padding:.4rem .75rem;
+  transition:all .22s;
+}
+.leon-quick button:hover{background:var(--cyan);color:#03171a;box-shadow:0 0 14px rgba(37,244,238,.7)}
+
+/* ============ MATCH MANIA ============ */
+.mania{
+  border-radius:30px;position:relative;overflow:hidden;
+  padding:2.4rem 1.5rem;
+  background:
+    radial-gradient(600px 300px at 90% 0%, rgba(255,45,120,.16), transparent 65%),
+    radial-gradient(600px 300px at 0% 100%, rgba(37,244,238,.14), transparent 65%),
+    var(--bg-2);
+  border:1px solid rgba(255,45,120,.3);
+  box-shadow:0 0 50px rgba(255,45,120,.14),inset 0 0 70px rgba(0,0,0,.45);
+}
+@media(min-width:840px){.mania{padding:3.2rem}}
+.mania-title{
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(2rem,7vw,3.6rem);letter-spacing:.02em;line-height:1.05;
+  margin-bottom:.4rem;
+}
+.mania-title .vs{
+  background:linear-gradient(95deg,var(--pink),var(--violet),var(--cyan));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 16px rgba(255,45,120,.6));
+}
+.mania-sub{color:var(--text-dim);max-width:620px;margin-bottom:2rem;font-size:.96rem}
+.mania-stages{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.8rem}
+@media(min-width:840px){.mania-stages{grid-template-columns:repeat(4,1fr)}}
+.stage{
+  border-radius:16px;padding:1.05rem .95rem;text-align:center;
+  background:rgba(255,255,255,.03);border:1px solid var(--line);
+  transition:all .3s;position:relative;
+}
+.stage:hover{border-color:var(--pink);box-shadow:0 0 22px rgba(255,45,120,.4);transform:translateY(-5px)}
+.stage .stg-n{
+  font-family:var(--font-display);font-weight:700;font-size:.66rem;letter-spacing:.22em;
+  color:var(--cyan);text-transform:uppercase;text-shadow:0 0 8px var(--cyan);
+}
+.stage h4{font-size:.95rem;margin:.3rem 0 .2rem}
+.stage .stg-d{font-size:.78rem;color:var(--text-dim);font-family:var(--font-display)}
+.mania-cols{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:840px){.mania-cols{grid-template-columns:1fr 1fr}}
+.mania-box{
+  border-radius:18px;padding:1.4rem;background:rgba(0,0,0,.35);
+  border:1px solid var(--line);transition:all .3s;
+}
+.mania-box:hover{border-color:var(--cyan);box-shadow:0 0 26px rgba(37,244,238,.25)}
+.mania-box h4{
+  font-family:var(--font-display);font-size:1.05rem;margin-bottom:.7rem;
+  color:var(--cyan);text-shadow:0 0 10px var(--cyan);
+}
+.mania-box.champ{border-color:rgba(255,211,77,.4)}
+.mania-box.champ:hover{border-color:#ffd34d;box-shadow:0 0 30px rgba(255,211,77,.35)}
+.mania-box.champ h4{color:#ffd34d;text-shadow:0 0 12px #ffd34d}
+.mania-box li{
+  padding:.34rem 0 .34rem 1.5rem;position:relative;color:var(--text-dim);font-size:.9rem;
+}
+.mania-box li::before{content:"⚡";position:absolute;left:0;filter:drop-shadow(0 0 6px var(--lime));font-size:.8rem;top:.45rem}
+.mania-box.champ li::before{content:"👑";filter:drop-shadow(0 0 6px #ffd34d)}
+.mania-box li b{color:#fff}
+
+/* ============ FOOTER ============ */
+footer{
+  position:relative;z-index:1;
+  border-top:1px solid var(--line);
+  padding:3rem 1.2rem 7rem;text-align:center;
+  background:linear-gradient(180deg,transparent,rgba(255,45,120,.05));
+}
+footer .f-logo{
+  font-family:var(--font-display);font-weight:700;font-size:1.3rem;
+  background:linear-gradient(95deg,var(--cyan),var(--pink),var(--lime));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 12px rgba(255,45,120,.5));
+  margin-bottom:.5rem;
+}
+footer p{color:var(--text-dim);font-size:.82rem;max-width:560px;margin:0 auto .4rem}
+footer .tiny{font-size:.7rem;opacity:.7}
+
+/* Barra de progreso scroll */
+#scroll-progress{
+  position:fixed;top:0;left:0;height:3px;width:0%;z-index:200;
+  background:linear-gradient(90deg,var(--cyan),var(--pink),var(--lime));
+  box-shadow:0 0 12px var(--pink),0 0 24px var(--cyan);
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <a class="nav-logo" href="#hero">
+    <span class="tt-glyph"><span>♪</span></span>
+    Community&nbsp;FEST&nbsp;<span style="color:var(--pink);text-shadow:0 0 10px var(--pink)">26</span>
+  </a>
+  <div class="nav-links">
+    <a href="#cronograma">Cronograma</a>
+    <a href="#categorias">Categorías</a>
+    <a href="#gameplay">Gameplay</a>
+    <a href="#recompensas">Recompensas</a>
+    <a href="#misiones">Misiones</a>
+    <a href="#leon">LEON</a>
+    <a href="#mania">Match Mania</a>
+  </div>
+  <a class="nav-cta" href="#hero">¡Únete al FEST!</a>
+</nav>
+
+<!-- ===== HILO DE LUZ ===== -->
+<div id="thread-wrap" aria-hidden="true">
+  <svg id="thread" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="threadGrad" x1="0" y1="0" x2="0" y2="1" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#25f4ee"/>
+        <stop offset="0.3" stop-color="#ff2d78"/>
+        <stop offset="0.55" stop-color="#b8ff2e"/>
+        <stop offset="0.8" stop-color="#25f4ee"/>
+        <stop offset="1" stop-color="#ff2d78"/>
+      </linearGradient>
+    </defs>
+    <path id="thread-base" d=""/>
+    <path id="thread-glow" d=""/>
+    <path id="thread-path" d=""/>
+    <circle id="thread-comet" r="6" cx="-50" cy="-50"/>
+  </svg>
+</div>
+
+<main>
+
+<!-- ===== 1. HERO ===== -->
+<header class="hero" id="hero">
+  <div class="particles" id="particles"></div>
+
+  <span class="hero-badge">⬤ LIVE · TIKTOK LIVE EVENT · LATAM ⬤</span>
+
+  <h1>
+    <span class="line-a glitch-host" data-text="TikTok Community">TikTok Community</span>
+    <span class="line-b glitch-host" data-text="FEST 26">FEST 26</span>
+  </h1>
+
+  <p class="hero-sub">Temporada de Equipo del FEST — ¡Sé Parte de la Victoria!</p>
+
+  <div class="hero-narrative reveal">
+    <p><strong>Creadores y espectadores, de la mano</strong>, construyendo comunidad e impulsando el orgullo regional.
+    Cada transmisión en vivo, cada interacción, cada muestra de apoyo:
+    <strong>todos pueden participar en la victoria.</strong>
+    <span class="punch">⚡ Haz que cada LIVE cuente.</span></p>
+  </div>
+
+  <div class="cta-row">
+    <button class="btn-neon" id="cta-join">🔥 ¡Únete al FEST!</button>
+    <a class="btn-ghost" href="#cronograma">Ver el recorrido ↓</a>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>#CommunityFEST2026</span><span>Temporada de Equipo</span><span>LIVE FEST</span>
+    <span>Haz que cada LIVE cuente</span><span>Orgullo Regional</span><span>Match Mania</span>
+    <span>#CommunityFEST2026</span><span>Temporada de Equipo</span><span>LIVE FEST</span>
+    <span>Haz que cada LIVE cuente</span><span>Orgullo Regional</span><span>Match Mania</span>
+  </div>
+</div>
+
+<!-- ===== 2. CRONOGRAMA ===== -->
+<section class="section" id="cronograma" data-thread-stop>
+  <span class="kicker">Recorrido del creador</span>
+  <h2 class="sec-title reveal">El camino hacia la <span class="neon-cyan">cumbre mundial</span></h2>
+  <p class="sec-sub reveal">Tres fases conectadas por un mismo hilo: tu comunidad. Sigue la luz y no te pierdas ninguna fecha.</p>
+
+  <div class="timeline">
+    <div class="phase p1 reveal flash">
+      <div class="phase-node">1</div>
+      <div class="phase-card">
+        <span class="phase-dates">11/06 → 17/06</span>
+        <h3>📝 Registro</h3>
+        <p>Completa las <b>tareas de registro</b> para obtener puntos antes de tiempo de forma <b>1:1</b> para la competencia principal. Cada punto que asegures ahora cuenta directo en el marcador.</p>
+      </div>
+    </div>
+
+    <div class="phase p2 reveal flash">
+      <div class="phase-node">2</div>
+      <div class="phase-card">
+        <span class="phase-dates">18/06 → 25/06</span>
+        <h3>🏁 Clasificación</h3>
+        <p><b>Rankings Diarios</b> (se reinician a las <b>00:00 hora local</b>) y <b>Rankings Generales</b> acumulativos. <b>Sin eliminaciones</b> en la ronda regional de 8 días: más oportunidades para remontar cada día.</p>
+      </div>
+    </div>
+
+    <div class="phase p3 reveal flash">
+      <div class="phase-node">3</div>
+      <div class="phase-card">
+        <span class="phase-dates">28/06 → 02/07 · UTC+0</span>
+        <h3>🌍 Finales Globales</h3>
+        <p>Los mejores creadores avanzan según su posición. El <b>Top 50 por categoría</b> compite en la <b>cumbre mundial</b> por la gloria del FEST.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. CATEGORÍAS ===== -->
+<section class="section" id="categorias" data-thread-stop>
+  <span class="kicker">Sistema de categorías</span>
+  <h2 class="sec-title reveal">6 ligas, <span class="neon-pink">una sola comunidad</span></h2>
+  <p class="sec-sub reveal">Tu categoría se define por los <b style="color:#fff">miembros activos de tu club de fans al 15 de junio</b>. Compites contra creadores de tu mismo nivel: todos tienen camino a la cima.</p>
+
+  <div class="region-tag reveal">🌎 División Regional · LATAM</div>
+
+  <div class="cat-grid">
+    <div class="cat-card c-leyenda reveal flash" style="--w:100%">
+      <div class="cat-rank">Categoría 01</div>
+      <div class="cat-name">👑 Leyenda</div>
+      <div class="cat-members"><b>400+</b> miembros activos</div>
+      <div class="cat-bar"><i></i></div>
+    </div>
+    <div class="cat-card c-platino reveal flash" style="--w:84%">
+      <div class="cat-rank">Categoría 02</div>
+      <div class="cat-name">💎 Platino</div>
+      <div class="cat-members"><b>200 – 400</b> miembros activos</div>
+      <div class="cat-bar"><i></i></div>
+    </div>
+    <div class="cat-card c-oro reveal flash" style="--w:68%">
+      <div class="cat-rank">Categoría 03</div>
+      <div class="cat-name">🥇 Oro</div>
+      <div class="cat-members"><b>100 – 200</b> miembros activos</div>
+      <div class="cat-bar"><i></i></div>
+    </div>
+    <div class="cat-card c-plata reveal flash" style="--w:52%">
+      <div class="cat-rank">Categoría 04</div>
+      <div class="cat-name">🥈 Plata</div>
+      <div class="cat-members"><b>50 – 100</b> miembros activos</div>
+      <div class="cat-bar"><i></i></div>
+    </div>
+    <div class="cat-card c-bronce reveal flash" style="--w:36%">
+      <div class="cat-rank">Categoría 05</div>
+      <div class="cat-name">🥉 Bronce</div>
+      <div class="cat-members"><b>20 – 50</b> miembros activos</div>
+      <div class="cat-bar"><i></i></div>
+    </div>
+    <div class="cat-card c-ascenso reveal flash" style="--w:20%">
+      <div class="cat-rank">Categoría 06</div>
+      <div class="cat-name">🚀 Ascenso</div>
+      <div class="cat-members"><b>0 – 20</b> miembros activos</div>
+      <div class="cat-bar"><i></i></div>
+    </div>
+  </div>
+
+  <p class="cat-note reveal">💡 <b>Corte oficial:</b> el conteo de miembros activos del club de fans se toma el <b>15 de junio</b>. ¡Activa a tu comunidad antes de esa fecha para subir de liga!</p>
+</section>
+
+<!-- ===== 4. GAMEPLAY ===== -->
+<section class="section" id="gameplay" data-thread-stop>
+  <span class="kicker">Gameplay</span>
+  <h2 class="sec-title reveal">¿Cómo obtener <span class="neon-lime">puntos</span> y <span class="neon-pink">bonus</span>?</h2>
+  <p class="sec-sub reveal">Domina las reglas y multiplica tu puntaje. Cada donador, cada regalo y cada batalla suman para tu ranking.</p>
+
+  <div class="gp-grid">
+    <!-- Puntos básicos -->
+    <div class="gp-card gp-pink wide reveal flash">
+      <div class="gp-icon">💗</div>
+      <h3><em>Puntos Básicos</em> — la base de tu victoria</h3>
+      <div class="pts-table">
+        <div class="pts-chip"><div class="num">100</div><div class="lbl">pts/día por <b>1 Donador</b></div></div>
+        <div class="pts-chip"><div class="num">300</div><div class="lbl">pts por <b>1 Donador por primera vez</b></div></div>
+        <div class="pts-chip"><div class="num">100</div><div class="lbl">pts por <b>1 Nuevo Super Fan</b></div></div>
+      </div>
+      <ul style="margin-top:1rem">
+        <li><b>Regalo Normal</b> = 1 punto &nbsp;·&nbsp; <b>Regalo Especial</b> = 2 puntos</li>
+      </ul>
+      <div class="gift-row">
+        <span class="gift">💖 Community Heart <span class="coin">1 moneda</span></span>
+        <span class="gift">✨ Community Style <span class="coin">99 monedas</span></span>
+        <span class="gift">🎵 Jollie Community <span class="coin">399 monedas</span></span>
+        <span class="gift">🏟️ Community Rally <span class="coin">2999 monedas</span></span>
+      </div>
+    </div>
+
+    <!-- Doble explosión -->
+    <div class="gp-card gp-cyan reveal flash">
+      <div class="gp-icon">💥</div>
+      <h3>Bonus 1 · <em>Doble Explosión</em></h3>
+      <p>Herramienta que <b>duplica tus puntos durante 30 minutos</b> al activarse en LIVE.</p>
+      <ul style="margin-top:.6rem">
+        <li>Se obtiene en el <b>registro</b></li>
+        <li>Por entrar al <b>Top 10 diario</b></li>
+        <li>Por <b>meta de donadores diarios</b> según tu categoría</li>
+      </ul>
+    </div>
+
+    <!-- Horas bonus -->
+    <div class="gp-card gp-lime reveal flash">
+      <div class="gp-icon">⏰</div>
+      <h3>Bonus 2 · <em>Horas Bonus</em></h3>
+      <p>Multiplicador <b>x2 automático para todos los creadores</b> de <b>21:00 a 22:00 hora local</b> los días 3, 6 y 8 del evento:</p>
+      <ul style="margin-top:.6rem">
+        <li><b>20 de junio</b> (día 3)</li>
+        <li><b>23 de junio</b> (día 6)</li>
+        <li><b>25 de junio</b> (día 8)</li>
+      </ul>
+      <span class="note-pill">⚠️ La Doble Explosión y la Hora Bonus <b>no se acumulan</b>.</span>
+    </div>
+
+    <!-- Batalla -->
+    <div class="gp-card gp-violet reveal flash">
+      <div class="gp-icon">⚔️</div>
+      <h3>Bonus 3 · <em>Batalla con Regalo Especial</em></h3>
+      <p>Gana la <b>puntuación más alta en batallas de 5 minutos</b> usando los regalos correctos:</p>
+      <ul style="margin-top:.6rem">
+        <li><b>Community Heart</b> otorga <b>x2 puntos</b></li>
+        <li><b>Community Gift</b> otorga <b>x3 puntos</b></li>
+      </ul>
+    </div>
+
+    <!-- Rally -->
+    <div class="gp-card gp-lime reveal flash">
+      <div class="gp-icon">🏟️</div>
+      <h3>Bonus 4 · <em>Community Rally</em></h3>
+      <p>Al recibir un regalo de <b>2,999 monedas</b> inicia una <b>cuenta regresiva de 60 segundos</b>: los espectadores envían <b>Community Heart</b> y cuantos más donadores únicos se unan, mayor el nivel alcanzado.</p>
+      <div class="rally-meter" aria-hidden="true">
+        <i style="--lv:1"></i><i style="--lv:2"></i><i style="--lv:3"></i><i style="--lv:4"></i><i style="--lv:5"></i>
+      </div>
+      <div class="rally-caption"><span>Nivel 1</span><span><b>Nivel 5 = 15 donadores únicos → 5,000 pts de ranking</b></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. RECOMPENSAS ===== -->
+<section class="section" id="recompensas" data-thread-stop>
+  <span class="kicker">Medallero</span>
+  <h2 class="sec-title reveal">Recompensas que <span class="neon-cyan">brillan</span> dentro y fuera de la app</h2>
+  <p class="sec-sub reveal">Desde trofeos físicos hasta efectos exclusivos en tus salas de LIVE. Esto es lo que está en juego.</p>
+
+  <div class="rw-grid">
+    <div class="rw-card rw-pink reveal flash">
+      <div class="rw-emoji">🏆</div>
+      <h3>Físicas e Inmersivas</h3>
+      <ul>
+        <li><b>Pase directo a LIVE FEST</b></li>
+        <li>Trofeos oficiales del evento</li>
+        <li>Medallas de <b>Honor</b> y <b>Cumplimiento</b></li>
+        <li><b>Insignia Física de Honor</b> para pared</li>
+        <li>Swag exclusivo del FEST</li>
+        <li><b>Meet &amp; Greet</b> con fans</li>
+      </ul>
+    </div>
+
+    <div class="rw-card rw-cyan reveal flash">
+      <div class="rw-emoji">📱</div>
+      <h3>Beneficios en la App</h3>
+      <ul>
+        <li><b>Diamantes</b></li>
+        <li>Cupones del <b>50% de descuento</b> (valor <b>$10 USD</b>)</li>
+        <li><b>Efectos de Honor Top</b> en salas de LIVE (Nivel 1 al 4)</li>
+        <li><b>Skins de Club de Fans</b>: bottom track · mid track con face · top tier full outfit</li>
+        <li>Animaciones de <b>Like personalizadas</b></li>
+        <li>Plantillas de <b>video de victoria</b></li>
+      </ul>
+    </div>
+
+    <div class="rw-card rw-lime reveal flash">
+      <div class="rw-emoji">🎟️</div>
+      <h3>Accesos Offline LATAM</h3>
+      <ul>
+        <li><b>100 boletos</b> al evento en físico</li>
+        <li>Distribuidos por categoría y posición final</li>
+        <li>Los <b>Top 3</b> de Leyenda, Platino y Oro reciben acceso <b>+1 invitado</b></li>
+        <li>Una experiencia presencial para celebrar con tu comunidad</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tickets reveal flash">
+    <h3>🎫 Distribución de los 100 boletos · evento físico LATAM</h3>
+    <p>Tu posición en el <b>ranking general por categoría</b> define tu boleto:</p>
+    <div class="tk-grid">
+      <div class="tk"><div class="n" data-count="28">0</div><div class="t">👑 Top Leyenda</div><span class="plus">Top 3 · +1 invitado</span></div>
+      <div class="tk"><div class="n" data-count="24">0</div><div class="t">💎 Top Platino</div><span class="plus">Top 3 · +1 invitado</span></div>
+      <div class="tk"><div class="n" data-count="20">0</div><div class="t">🥇 Top Oro</div><span class="plus">Top 3 · +1 invitado</span></div>
+      <div class="tk"><div class="n" data-count="10">0</div><div class="t">🥈 Top Plata</div></div>
+      <div class="tk"><div class="n" data-count="5">0</div><div class="t">🥉 Top Bronce</div></div>
+      <div class="tk"><div class="n" data-count="4">0</div><div class="t">🚀 Top Ascenso</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6. MISIONES ===== -->
+<section class="section" id="misiones" data-thread-stop>
+  <span class="kicker">Misiones diarias</span>
+  <h2 class="sec-title reveal">Cada día, <span class="neon-pink">una nueva forma</span> de sumar</h2>
+  <p class="sec-sub reveal">El FEST se gana en equipo: creadores y espectadores tienen su propio rol en la victoria.</p>
+
+  <div class="split">
+    <div class="mission-col creator reveal flash">
+      <h3>🎤 Tareas Diarias del Creador</h3>
+      <div class="pillar">
+        <h4>💬 Pilar 1 · Interacción con fans</h4>
+        <p>Interactúa con tus fans en LIVE para conseguir <b>comentarios</b> y encender la conversación.</p>
+      </div>
+      <div class="pillar">
+        <h4>💝 Pilar 2 · Misiones de donadores</h4>
+        <p>Cumple misiones para conseguir <b>donadores</b> y hacer crecer tu base de apoyo.</p>
+      </div>
+      <div class="pillar">
+        <h4>🎮 Pilar 3 · Misiones de Gameplay</h4>
+        <p>Usa <b>efectos</b>, transmite <b>25 minutos</b> y completa retos dentro del LIVE.</p>
+      </div>
+      <div class="mission-foot">
+        🏁 En <b>Clasificación</b>: otorgan puntos directos y <b>Cofres del Tesoro</b>.<br>
+        🌍 En <b>Finales Globales</b>: desbloquean niveles de recompensa hasta el <b>Nivel 5</b> con Insignias de logro.
+      </div>
+    </div>
+
+    <div class="mission-col viewer reveal flash">
+      <h3>📣 Acciones del Espectador</h3>
+      <div class="pillar">
+        <h4>🎁 Envía regalos</h4>
+        <p>Cada regalo en LIVE suma puntos a tu creador favorito. Los <b>regalos especiales valen doble</b>.</p>
+      </div>
+      <div class="pillar">
+        <h4>🗳️ Votos diarios</h4>
+        <p>Gana votos por <b>ver gameplays</b>, hacer <b>tap máximo x300</b> y subir videos promocionales con <span class="hashtag">#CommunityFEST2026</span> para <b>+100/200 votos</b>.</p>
+      </div>
+      <div class="pillar">
+        <h4>🪙 Recarga monedas</h4>
+        <p>Recarga <b>monedas en la web</b> y prepara tu arsenal de apoyo para los momentos decisivos.</p>
+      </div>
+      <div class="mission-foot">
+        💡 Tu apoyo diario puede ser la diferencia entre el <b>Top 50</b> y quedarse fuera. ¡Cada voto cuenta!
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7. LEON ===== -->
+<section class="section" id="leon" data-thread-stop>
+  <span class="kicker">Asistente IA</span>
+  <h2 class="sec-title reveal">Conoce a <span class="neon-cyan">LEON</span>, tu copiloto del FEST</h2>
+  <p class="sec-sub reveal">Un tierno león animado con collar de clave de sol 🎼 que vive en la app y te acompaña en cada paso de la competencia.</p>
+
+  <div class="leon-panel reveal flash">
+    <div class="leon-avatar-zone">
+      <div class="leon-avatar">
+        <div class="leon-ring"></div>
+        <!-- León SVG -->
+        <svg viewBox="0 0 200 200" role="img" aria-label="LEON, el asistente de IA del FEST">
+          <defs>
+            <radialGradient id="maneGrad" cx="50%" cy="45%" r="60%">
+              <stop offset="0%" stop-color="#ff9d3f"/>
+              <stop offset="60%" stop-color="#ff2d78"/>
+              <stop offset="100%" stop-color="#8a5cff"/>
+            </radialGradient>
+            <filter id="leonGlow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="5" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <!-- Melena -->
+          <g filter="url(#leonGlow)">
+            <circle cx="100" cy="95" r="62" fill="url(#maneGrad)" opacity=".92"/>
+            <g fill="url(#maneGrad)">
+              <circle cx="100" cy="33" r="13"/><circle cx="135" cy="42" r="13"/><circle cx="158" cy="70" r="13"/>
+              <circle cx="163" cy="103" r="13"/><circle cx="150" cy="133" r="13"/><circle cx="125" cy="152" r="13"/>
+              <circle cx="100" cy="158" r="13"/><circle cx="75" cy="152" r="13"/><circle cx="50" cy="133" r="13"/>
+              <circle cx="37" cy="103" r="13"/><circle cx="42" cy="70" r="13"/><circle cx="65" cy="42" r="13"/>
+            </g>
+          </g>
+          <!-- Orejas -->
+          <circle cx="63" cy="56" r="14" fill="#ffd9a8"/><circle cx="137" cy="56" r="14" fill="#ffd9a8"/>
+          <circle cx="63" cy="56" r="7" fill="#ffb1c9"/><circle cx="137" cy="56" r="7" fill="#ffb1c9"/>
+          <!-- Cara -->
+          <circle cx="100" cy="97" r="44" fill="#ffe3b8"/>
+          <!-- Ojos -->
+          <g>
+            <circle cx="84" cy="90" r="7.5" fill="#1b1430"/>
+            <circle cx="116" cy="90" r="7.5" fill="#1b1430"/>
+            <circle cx="86.5" cy="87.5" r="2.6" fill="#fff"/>
+            <circle cx="118.5" cy="87.5" r="2.6" fill="#fff"/>
+          </g>
+          <!-- Mejillas -->
+          <circle cx="72" cy="104" r="6.5" fill="#ffb1c9" opacity=".85"/>
+          <circle cx="128" cy="104" r="6.5" fill="#ffb1c9" opacity=".85"/>
+          <!-- Hocico -->
+          <ellipse cx="100" cy="108" rx="14" ry="11" fill="#fff4e0"/>
+          <path d="M94 104 Q100 99 106 104 Q103 110 100 108 Q97 110 94 104Z" fill="#ff7aa8"/>
+          <path d="M100 110 L100 116 M100 116 Q93 122 88 117 M100 116 Q107 122 112 117"
+                stroke="#caa06a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+          <!-- Collar -->
+          <path d="M62 132 Q100 150 138 132" stroke="#25f4ee" stroke-width="7" fill="none" stroke-linecap="round"
+                filter="url(#leonGlow)"/>
+          <!-- Medalla clave de sol -->
+          <circle cx="100" cy="146" r="14" fill="#0c0c18" stroke="#25f4ee" stroke-width="2.5" filter="url(#leonGlow)"/>
+          <text x="100" y="153" text-anchor="middle" font-size="17" fill="#b8ff2e"
+                style="filter:drop-shadow(0 0 4px #b8ff2e)">𝄞</text>
+        </svg>
+      </div>
+      <div style="text-align:center">
+        <div class="leon-name">L E O N</div>
+        <div class="leon-tag">Asistente virtual de IA · dentro de la app</div>
+      </div>
+    </div>
+
+    <div class="leon-skills">
+      <div class="leon-skill">
+        <div class="ic">❓</div>
+        <div>
+          <h4>Resuelve tus dudas al instante</h4>
+          <p>Responde preguntas básicas sobre el <b style="color:#fff">gameplay, las reglas y las fechas</b> del evento sin salir de la app.</p>
+        </div>
+      </div>
+      <div class="leon-skill">
+        <div class="ic">📊</div>
+        <div>
+          <h4>Asistencia en el ranking</h4>
+          <p>Te informa <b style="color:#fff">cuántos puntos te faltan para superar a tus rivales</b> y si aún estás a tiempo de recuperarte.</p>
+        </div>
+      </div>
+      <div class="leon-skill">
+        <div class="ic">🧭</div>
+        <div>
+          <h4>Estratega de misiones</h4>
+          <p>Sugiere <b style="color:#fff">qué misiones te conviene realizar primero</b> según su nivel de recompensa y dificultad.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 8. MATCH MANIA ===== -->
+<section class="section" id="mania" data-thread-stop>
+  <span class="kicker">Evento paralelo extendido</span>
+  <div class="mania reveal flash">
+    <h2 class="mania-title">MATCH <span class="vs">⚡ MANIA</span></h2>
+    <p class="mania-sub">El torneo <b style="color:#fff">interregional por equipos</b> que se extiende más allá del festival principal. Tu región, tu equipo, tu bandera: la batalla continúa hasta julio.</p>
+
+    <div class="mania-stages">
+      <div class="stage reveal">
+        <div class="stg-n">Etapa 1</div>
+        <h4>🔥 Calentamiento</h4>
+        <div class="stg-d">18/06 – 25/06</div>
+      </div>
+      <div class="stage reveal">
+        <div class="stg-n">Etapa 2</div>
+        <h4>🎯 Calificatoria Regional</h4>
+        <div class="stg-d">26/06 – 02/07</div>
+      </div>
+      <div class="stage reveal">
+        <div class="stg-n">Etapa 3</div>
+        <h4>🛡️ Fase de Grupos</h4>
+        <div class="stg-d">04/07 – 07/07</div>
+      </div>
+      <div class="stage reveal">
+        <div class="stg-n">Etapa 4</div>
+        <h4>🌍 Final Global</h4>
+        <div class="stg-d">09/07 – 11/07</div>
+      </div>
+    </div>
+
+    <div class="mania-cols">
+      <div class="mania-box reveal">
+        <h4>⚙️ Dinámica del torneo</h4>
+        <ul>
+          <li><b>Batallas CCPK</b> entre equipos regionales</li>
+          <li><b>Diseño exclusivo de regalos</b> por equipo regional</li>
+          <li><b>Apertura extendida de la caja fuerte</b></li>
+        </ul>
+      </div>
+      <div class="mania-box champ reveal">
+        <h4>👑 Recompensas · Equipo #1 del Mundo</h4>
+        <ul>
+          <li><b>Viaje patrocinado</b></li>
+          <li>Producción de <b>video profesional</b></li>
+          <li><b>Trofeo exclusivo</b> + anuncio en LIVE</li>
+          <li><b>Diamantes</b> y <b>marco de perfil de campeón</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="f-logo">TikTok Community FEST 26</div>
+  <p>Temporada de Equipo del FEST · Creadores y espectadores construyendo comunidad e impulsando el orgullo regional.</p>
+  <p class="tiny">Página conceptual de fan/demo · Las fechas y reglas mostradas corresponden a la dinámica del evento. #CommunityFEST2026</p>
+</footer>
+
+<!-- ===== LEON CHAT FLOTANTE ===== -->
+<div class="leon-chat" id="leonChat" role="dialog" aria-label="Chat con LEON">
+  <div class="leon-chat-head">
+    <span class="face">🦁</span>
+    <div>
+      <b>LEON</b>
+      <small>● en línea · IA del FEST</small>
+    </div>
+  </div>
+  <div class="leon-log" id="leonLog">
+    <div class="msg bot">¡Rooar! 🦁🎼 Soy <b>LEON</b>, tu asistente del Community FEST 26. ¿En qué te ayudo hoy?</div>
+  </div>
+  <div class="leon-quick" id="leonQuick">
+    <button data-q="fechas">📅 Fechas clave</button>
+    <button data-q="puntos">💗 ¿Cómo sumo puntos?</button>
+    <button data-q="ranking">📊 Mi ranking</button>
+    <button data-q="misiones">🧭 ¿Qué misión hago?</button>
+  </div>
+</div>
+<button class="leon-fab" id="leonFab" aria-label="Abrir chat con LEON">
+  🦁<span class="dot"></span>
+</button>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============ HILO DE LUZ (SVG dibujado con scroll) ============ */
+  const wrap   = document.getElementById('thread-wrap');
+  const svg    = document.getElementById('thread');
+  const pBase  = document.getElementById('thread-base');
+  const pGlow  = document.getElementById('thread-glow');
+  const pMain  = document.getElementById('thread-path');
+  const comet  = document.getElementById('thread-comet');
+  const grad   = document.getElementById('threadGrad');
+  let pathLen = 0;
+
+  function buildThread(){
+    const docH = document.documentElement.scrollHeight;
+    const w = window.innerWidth;
+    wrap.style.height = docH + 'px';
+    svg.setAttribute('viewBox', `0 0 ${w} ${docH}`);
+    svg.setAttribute('width', w);
+    svg.setAttribute('height', docH);
+    grad.setAttribute('y2', docH);
+
+    const hero = document.getElementById('hero');
+    const startY = hero.offsetTop + hero.offsetHeight * 0.62;
+    const stops = [...document.querySelectorAll('[data-thread-stop]')]
+      .map(s => s.offsetTop + Math.min(s.offsetHeight * 0.4, 360));
+
+    const mobile = w < 840;
+    const cx = w / 2;
+    const amp = mobile ? w * 0.34 : Math.min(w * 0.36, 430);
+
+    let d = `M ${cx} ${startY}`;
+    let prevY = startY, side = 1;
+    stops.forEach(y => {
+      const x = cx + side * amp;
+      const midY = (prevY + y) / 2;
+      d += ` C ${cx + side*amp*1.25} ${midY - (y-prevY)*0.18}, ${x} ${midY}, ${x} ${y}`;
+      prevY = y; side *= -1;
+    });
+    // Caída final hacia el footer
+    const endY = docH - 130;
+    d += ` C ${cx + side*amp} ${(prevY+endY)/2}, ${cx} ${(prevY+endY)/2 + 80}, ${cx} ${endY}`;
+
+    pBase.setAttribute('d', d);
+    pGlow.setAttribute('d', d);
+    pMain.setAttribute('d', d);
+    pathLen = pMain.getTotalLength();
+    [pGlow, pMain].forEach(p => {
+      p.style.strokeDasharray = pathLen;
+    });
+    drawThread();
+  }
+
+  function drawThread(){
+    if(!pathLen) return;
+    const doc = document.documentElement;
+    const max = doc.scrollHeight - window.innerHeight;
+    const raw = max > 0 ? window.scrollY / max : 0;
+    const prog = Math.min(1, Math.max(0.015, raw * 1.06));
+    const offset = pathLen * (1 - prog);
+    pGlow.style.strokeDashoffset = offset;
+    pMain.style.strokeDashoffset = offset;
+    const pt = pMain.getPointAtLength(pathLen * prog);
+    comet.setAttribute('cx', pt.x);
+    comet.setAttribute('cy', pt.y);
+
+    // Barra de progreso superior
+    document.getElementById('scroll-progress').style.width = (raw*100) + '%';
+  }
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if(!ticking){
+      requestAnimationFrame(() => { drawThread(); ticking = false; });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  let resizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(buildThread, 180);
+  });
+
+  /* ============ INTERSECTION OBSERVER (reveal + contadores) ============ */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        e.target.querySelectorAll('[data-count]').forEach(animateCount);
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.18, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  function animateCount(el){
+    if(el.dataset.done) return;
+    el.dataset.done = '1';
+    const target = +el.dataset.count;
+    const dur = 1200, t0 = performance.now();
+    (function tick(t){
+      const p = Math.min(1, (t - t0) / dur);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * ease);
+      if(p < 1) requestAnimationFrame(tick);
+    })(t0);
+  }
+
+  /* ============ PARTÍCULAS HERO ============ */
+  const pHost = document.getElementById('particles');
+  const colors = ['#ff2d78','#25f4ee','#b8ff2e','#8a5cff','#ffffff'];
+  for(let i = 0; i < 34; i++){
+    const dot = document.createElement('i');
+    const size = 2 + Math.random() * 5;
+    const c = colors[Math.floor(Math.random() * colors.length)];
+    dot.style.cssText = `
+      left:${Math.random()*100}%;
+      width:${size}px;height:${size}px;
+      background:${c};
+      box-shadow:0 0 ${6+size*2}px ${c};
+      --sway:${(Math.random()*120-60).toFixed(0)}px;
+      animation-duration:${(7+Math.random()*9).toFixed(1)}s;
+      animation-delay:${(Math.random()*-14).toFixed(1)}s;
+    `;
+    pHost.appendChild(dot);
+  }
+
+  /* ============ RIPPLE EN BOTONES ============ */
+  document.querySelectorAll('.btn-neon,.btn-ghost').forEach(btn => {
+    btn.addEventListener('click', function(ev){
+      const r = document.createElement('span');
+      r.className = 'ripple';
+      const rect = this.getBoundingClientRect();
+      const d = Math.max(rect.width, rect.height);
+      r.style.cssText = `width:${d}px;height:${d}px;left:${ev.clientX-rect.left-d/2}px;top:${ev.clientY-rect.top-d/2}px;`;
+      this.appendChild(r);
+      setTimeout(() => r.remove(), 700);
+    });
+  });
+  document.getElementById('cta-join').addEventListener('click', () => {
+    document.getElementById('cronograma').scrollIntoView({behavior:'smooth'});
+  });
+
+  /* ============ CHAT LEON ============ */
+  const fab = document.getElementById('leonFab');
+  const chat = document.getElementById('leonChat');
+  const log = document.getElementById('leonLog');
+  const answers = {
+    fechas: '📅 ¡Apunta! Registro: <b>11–17/06</b> · Clasificación: <b>18–25/06</b> · Finales Globales: <b>28/06–02/07 (UTC+0)</b>. Y Match Mania sigue hasta el <b>11/07</b>. 🦁',
+    puntos: '💗 Fácil: 1 Donador = <b>100 pts/día</b>, primer donador = <b>300 pts</b>, nuevo Super Fan = <b>100 pts</b>. Regalo normal = 1 pt y especial = 2 pts. ¡Activa la Doble Explosión para duplicar todo 30 min! 💥',
+    ranking: '📊 Estás a solo <b>1,250 pts</b> de superar a tu rival más cercano… ¡y la Hora Bonus x2 de las 21:00 es tu mejor oportunidad de remontar! Aún puedes recuperarte. 🚀',
+    misiones: '🧭 Mi sugerencia: empieza por <b>transmitir 25 min</b> (fácil + Cofre del Tesoro 🎁), luego la misión de <b>comentarios</b> y cierra con la de <b>donadores</b>, que es la de mayor recompensa hoy.'
+  };
+  const userLabels = {
+    fechas:'📅 Fechas clave', puntos:'💗 ¿Cómo sumo puntos?',
+    ranking:'📊 Mi ranking', misiones:'🧭 ¿Qué misión hago?'
+  };
+  fab.addEventListener('click', () => chat.classList.toggle('open'));
+  document.getElementById('leonQuick').addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-q]');
+    if(!b) return;
+    addMsg(userLabels[b.dataset.q], 'user');
+    const typing = addMsg('🦁 escribiendo…', 'bot');
+    setTimeout(() => { typing.innerHTML = answers[b.dataset.q]; }, 650);
+  });
+  function addMsg(html, who){
+    const m = document.createElement('div');
+    m.className = 'msg ' + who;
+    m.innerHTML = html;
+    log.appendChild(m);
+    log.scrollTop = log.scrollHeight;
+    return m;
+  }
+
+  /* ============ INIT ============ */
+  window.addEventListener('load', buildThread);
+  // Fallback si load tarda (fuentes)
+  setTimeout(buildThread, 600);
+})();
+</script>
+</body>
+</html>
